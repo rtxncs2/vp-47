@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Centered Plyr Player</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <!-- Plyr CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.css"
+  />
+
+  <style>
+    :root {
+      --bg: #0b0b0b;
+      --card: #121212;
+      --text: #f1f1f1;
+      --muted: #9aa0a6;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    /* Full viewport centering */
+    .app {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;       /* vertical center */
+      justify-content: center;   /* horizontal center */
+      padding: 12px;
+    }
+
+    .player-wrapper {
+      width: 100%;
+      max-width: 900px;
+      background: black;
+    }
+
+    .plyr {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .title {
+      margin-top: 10px;
+      text-align: center;
+      font-size: 15px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app">
+    <div>
+      <div class="player-wrapper">
+        <video id="player" playsinline controls>
+          <source
+            src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4"
+            type="video/mp4"
+          />
+        </video>
+      </div>
+
+      <div class="title">Demo Video · Mobile-first · Dark UI</div>
+    </div>
+  </div>
+
+  <!-- Plyr JS -->
+  <script src="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.polyfilled.js"></script>
+
+  <script>
+    const player = new Plyr('#player', {
+      controls: [
+        'play-large',
+        'play',
+        'progress',
+        'current-time',
+        'mute',
+        'volume',
+        'fullscreen'
+      ],
+      fullscreen: {
+        enabled: true,
+        iosNative: true
+      }
+    });
+  </script>
+
+</body>
+</html>
